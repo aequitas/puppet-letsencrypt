@@ -71,9 +71,9 @@ class letsencrypt (
             source => 'puppet:///modules/letsencrypt/renew.sh',
             mode   => '0755';
 
-        "${config_root}/config.sh":
+        "${config_root}/config":
             ensure  => present,
-            content => template('letsencrypt/config.sh.erb');
+            content => template('letsencrypt/config.erb');
 
         $www_root:
             ensure => directory;

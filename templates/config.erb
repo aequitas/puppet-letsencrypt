@@ -3,6 +3,9 @@ CA="https://acme-staging.api.letsencrypt.org/directory"
 <% end -%>
 WELLKNOWN="/var/www/letsencrypt"
 
+# don't stop on errors
+PARAM_KEEP_GOING="yes"
+
 <% if @email -%>
 CONTACT_EMAIL=<%= @email %>
 <% end -%>

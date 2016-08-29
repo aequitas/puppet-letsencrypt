@@ -4,3 +4,7 @@ fix:
 
 check:
 	puppet-lint manifests
+
+update:
+	curl -s -o files/letsencrypt.sh \
+		https://raw.githubusercontent.com/lukas2511/letsencrypt.sh/master/letsencrypt.sh
