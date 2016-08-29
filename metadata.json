@@ -1,0 +1,14 @@
+{
+  "name": "aequitas-letsencrypt",
+  "version": "0.1.0",
+  "author": "aequitas",
+  "summary": "Manage TLS certificates using letsencrypt.sh.",
+  "license": "Apache 2.0",
+  "source": "github.com/aequitas/puppet-letsencrypt",
+  "project_page": "https://github.com/aequitas/puppet-letsencrypt",
+  "issues_url": "https://github.com/aequitas/puppet-letsencrypt/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
