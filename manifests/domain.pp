@@ -1,3 +1,4 @@
+# configure a domain for letsencrypt.sh renewal
 define letsencrypt::domain (
     $domain = $title,
     $subdomains = [],

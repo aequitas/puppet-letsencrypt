@@ -36,7 +36,7 @@
 #
 # Copyright 2016 Johan Bloemberg
 #
-class letsencrypt {
+class letsencrypt (
     $email       = undef,
     $www_root    = '/var/www/letsencrypt',
     $config_root = '/etc/letsencrypt.sh',
@@ -44,6 +44,8 @@ class letsencrypt {
     $staging     = false,
 ){
     include renew
+
+    validate_string($email)
 
     ensure_packages(['curl'], {ensure => 'present'})
 
