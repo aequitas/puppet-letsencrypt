@@ -103,5 +103,5 @@ class letsencrypt (
         special => weekly,
     }
 
-    File["${config_root}/config.sh"] ~> Class['renew']
+    File["${config_root}/config"] ~> Class['renew']
 }
