@@ -43,11 +43,13 @@ class letsencrypt (
     $cert_root   = '/etc/letsencrypt.sh/certs',
     $staging     = false,
 ){
+    include ::cron
+
     include renew
 
     validate_string($email)
 
-    ensure_packages(['curl', 'cron'], {ensure => 'present'})
+    ensure_packages(['curl'], {ensure => 'present'})
 
     File {
         owner  => root,
