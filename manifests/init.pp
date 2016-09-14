@@ -47,7 +47,7 @@ class letsencrypt (
 
     validate_string($email)
 
-    ensure_packages(['curl'], {ensure => 'present'})
+    ensure_packages(['curl', 'cron'], {ensure => 'present'})
 
     File {
         owner  => root,
