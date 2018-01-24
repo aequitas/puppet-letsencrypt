@@ -45,7 +45,7 @@ class letsencrypt (
 ){
     include ::cron
 
-    include renew
+    include letsencrypt::renew
 
     validate_string($email)
 
@@ -98,12 +98,12 @@ class letsencrypt (
     concat { "${config_root}/domains.txt":
         ensure         => present,
         ensure_newline => true,
-    } ~> Class['renew']
+    } ~> Class['letsencrypt::renew']
 
     cron { 'letsencrypt-renew':
         command => "${config_root}/renew.sh >/dev/null",
         special => weekly,
     }
 
-    File["${config_root}/config"] ~> Class['renew']
+    File["${config_root}/config"] ~> Class['letsencrypt::renew']
 }
