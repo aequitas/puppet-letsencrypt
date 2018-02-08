@@ -37,7 +37,7 @@
 # Copyright 2016 Johan Bloemberg
 #
 class letsencrypt (
-    $email       = undef,
+    String $email       = undef,
     $www_root    = '/var/www/letsencrypt',
     $config_root = '/etc/letsencrypt.sh',
     $cert_root   = '/etc/letsencrypt.sh/certs',
@@ -46,8 +46,6 @@ class letsencrypt (
     include ::cron
 
     include letsencrypt::renew
-
-    validate_string($email)
 
     ensure_packages(['curl'], {ensure => 'present'})
 
@@ -76,6 +74,11 @@ class letsencrypt (
         "${config_root}/config":
             ensure  => present,
             content => template('letsencrypt/config.erb');
+
+        "${config_root}/hooks.sh":
+            ensure => present,
+            source => 'puppet:///modules/letsencrypt/hooks.sh',
+            mode   => '0755';
 
         $www_root:
             ensure => directory;
