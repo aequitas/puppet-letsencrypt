@@ -24,5 +24,11 @@ define letsencrypt::domain (
             ensure  => link,
             replace => no,
             target  => "${letsencrypt::cert_root}/placeholders/key.pem";
+
+        "${letsencrypt::cert_root}/${domain}/combined.pem":
+            ensure  => file,
+            replace => no,
+            source  => 'puppet:///modules/letsencrypt/placeholder_combined.pem';
+
     } ~> Service['nginx'] ~> Class['letsencrypt::renew']
 }
