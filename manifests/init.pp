@@ -43,11 +43,9 @@ class letsencrypt (
     $cert_root   = '/etc/letsencrypt.sh/certs',
     $staging     = false,
 ){
-    include ::cron
-
     include letsencrypt::renew
 
-    ensure_packages(['curl'], {ensure => 'present'})
+    ensure_packages(['curl', 'cron'], {ensure => 'present'})
 
     File {
         owner  => root,
