@@ -30,5 +30,5 @@ define letsencrypt::domain (
             replace => no,
             source  => 'puppet:///modules/letsencrypt/placeholder_combined.pem';
 
-    } ~> Service['nginx'] ~> Class['letsencrypt::renew']
+    } ~> Class['letsencrypt::renew']
 }

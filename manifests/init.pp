@@ -37,11 +37,12 @@
 # Copyright 2016 Johan Bloemberg
 #
 class letsencrypt (
-    String $email       = undef,
-    $www_root    = '/var/www/letsencrypt',
-    $config_root = '/etc/letsencrypt.sh',
-    $cert_root   = '/etc/letsencrypt.sh/certs',
-    $staging     = false,
+    String $email = undef,
+    $www_root     = '/var/www/letsencrypt',
+    $config_root  = '/etc/letsencrypt.sh',
+    $cert_root    = '/etc/letsencrypt.sh/certs',
+    $staging      = false,
+    $post_command = '',
 ){
     include letsencrypt::renew
 
@@ -66,7 +67,7 @@ class letsencrypt (
 
         "${config_root}/renew.sh":
             ensure => present,
-            source => 'puppet:///modules/letsencrypt/renew.sh',
+            content => template('letsencrypt/renew.sh.erb'),
             mode   => '0755';
 
         "${config_root}/config":
