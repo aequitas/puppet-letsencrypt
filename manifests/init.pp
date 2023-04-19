@@ -37,7 +37,7 @@
 # Copyright 2016 Johan Bloemberg
 #
 class letsencrypt (
-    String $email = undef,
+    $email = undef,
     $www_root     = '/var/www/letsencrypt',
     $config_root  = '/etc/letsencrypt.sh',
     $cert_root    = '/etc/letsencrypt.sh/certs',
