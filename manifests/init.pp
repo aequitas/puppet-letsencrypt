@@ -104,7 +104,9 @@ class letsencrypt (
 
     cron { 'letsencrypt-renew':
         command => "${config_root}/renew.sh >/dev/null",
-        special => weekly,
+        # schedule weekly, but not on sunday 00:00 (@weekly), because everyone does that and the ACME servers will be to busy
+        hour => 9,
+        weekday => 1,
     }
 
     File["${config_root}/config"] ~> Class['letsencrypt::renew']
